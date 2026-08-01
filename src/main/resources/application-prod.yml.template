@@ -1,0 +1,31 @@
+# ============================================================
+# PredictAPI — Prod Profile TEMPLATE
+# Copy to application-prod.yml and fill in real values.
+# application-prod.yml is in .gitignore and must NEVER be committed.
+# ============================================================
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/predictapi}
+    username: ${DB_USERNAME:predictapi_user}
+    password: ${DB_PASSWORD:changeme}
+    driver-class-name: org.postgresql.Driver
+
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000       # 30 s
+      idle-timeout: 600000            # 10 min
+      max-lifetime: 1800000           # 30 min
+      pool-name: PredictAPIPool
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate   # Never alter schema in prod — validate only
+    show-sql: false
+
+logging:
+  level:
+    com.predictapi: INFO
+    org.hibernate.SQL: WARN
