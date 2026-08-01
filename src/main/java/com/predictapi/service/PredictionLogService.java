@@ -40,11 +40,9 @@ public class PredictionLogService {
      * @return the saved entity with its generated {@code id} and {@code createdAt}
      */
     @Transactional
-    public PredictionLog save(PredictionLog log) {
-        PredictionLog saved = repository.save(log);
-        log.setId(saved.getId());
-        log.setCreatedAt(saved.getCreatedAt());
-        log.log("Persisted prediction log id={} class={} confidence={}",
+    public PredictionLog save(PredictionLog predictionLog) {
+        PredictionLog saved = repository.save(predictionLog);
+        log.info("Persisted prediction log id={} class={} confidence={}",
                 saved.getId(), saved.getPredictedClass(), saved.getConfidence());
         return saved;
     }
