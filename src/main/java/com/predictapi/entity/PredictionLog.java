@@ -32,7 +32,15 @@ import java.util.UUID;
  * </p>
  */
 @Entity
-@Table(name = "prediction_log")
+@Table(
+    name = "prediction_log",
+    indexes = {
+        // Used by GET /api/v1/history default sort (created_at DESC)
+        @Index(name = "idx_prediction_log_created_at", columnList = "created_at"),
+        // Used by future analytics queries (filter by digit class)
+        @Index(name = "idx_prediction_log_predicted_class", columnList = "predicted_class")
+    }
+)
 @Data
 @Builder
 @NoArgsConstructor
