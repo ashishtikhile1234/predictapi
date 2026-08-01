@@ -1,0 +1,30 @@
+# ============================================================
+# PredictAPI — Test Profile
+# Used by @SpringBootTest integration tests.
+# Always uses H2 so tests are fully self-contained with no external DB.
+# ============================================================
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:predictapi_test;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+# Suppress Swagger scan noise in test logs
+springdoc:
+  api-docs:
+    enabled: false
+
+predictapi:
+  model:
+    path: classpath:model/mnist-cnn.onnx
+    version: mnist-cnn-v1-test
+  image:
+    max-bytes: 5242880
