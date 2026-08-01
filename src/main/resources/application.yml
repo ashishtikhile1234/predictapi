@@ -1,0 +1,51 @@
+# ============================================================
+# PredictAPI — Base Application Configuration
+# Profile-specific overrides: application-dev.yml / application-prod.yml
+# ============================================================
+
+spring:
+  application:
+    name: predictapi
+
+  # JPA / Hibernate
+  jpa:
+    open-in-view: false           # Prevent lazy-loading pitfalls in REST context
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Disable banner for cleaner production logs (optional)
+  main:
+    banner-mode: "console"
+
+# Server
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# SpringDoc / Swagger UI
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    display-request-duration: true
+
+# Spring Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# PredictAPI custom properties
+predictapi:
+  model:
+    path: classpath:model/mnist-cnn.onnx
+    version: mnist-cnn-v1
+  image:
+    max-bytes: 5242880   # 5 MB
