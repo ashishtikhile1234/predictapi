@@ -1,0 +1,35 @@
+# ===== Compiled Output =====
+target/
+*.class
+*.jar
+*.war
+
+# ===== ONNX Model (too large for VCS, download separately) =====
+src/main/resources/model/*.onnx
+
+# ===== IDE Files =====
+.idea/
+*.iml
+.vscode/
+*.launch
+.classpath
+.project
+.settings/
+
+# ===== Maven =====
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+
+# ===== Environment & Secrets =====
+.env
+*.env.local
+application-prod.yml
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+logs/
+*.log
