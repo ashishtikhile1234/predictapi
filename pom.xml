@@ -46,6 +46,14 @@
             <version>${onnxruntime.version}</version>
         </dependency>
 
+        <!-- ===== DATABASES ===== -->
+        <!-- H2 — embedded DB for local dev and tests (zero config) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
